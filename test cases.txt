@@ -1,0 +1,56 @@
+test cases
+
+
+1.
+
+The user should be able to view all the moons and planets on one screen.
+
+As a user I can view all the available planets and moons on the main screen.
+
+Assert that the list of moons and planets are displayed on the screen.
+
+2.
+The user should be able to search for certain moons and planets and have only the results of their search terms displayed in real-time.
+
+As a user I can search for planets or moons that I want to view and only have those displayed on the screen as I type my search keywords.
+
+Assert the search terms correctly correspond to the list that is displayed in real-time.
+
+3.
+The user can separate the moons and planets columns with ease.
+
+As a user I can look at the planets data or just the moon data without hassle.
+
+Assert swiping or selecting the appropriate tabs will populate the list with just moons or planets.
+
+4.
+There must be a “favorite” section where the user can add planets or moons to a favorite list of their choosing.
+
+As a user I can add planets or moons to my favorite list and it will be saved for viewing later on.
+
+Assert pressing the + button will add that particular space body to the favorite list.
+5.
+Each planet or moon must have a more descriptive section whenever the user selects that particular planet or satellite.
+
+As a user I can find out more information about the planet or moon after selecting it from the list.
+
+Assert that when selecting a planet or moon from the list, its properties are properly pulled from the database and displayed on the screen.
+6.
+Each body should have an image so that the user has an idea of what it looks like.
+
+As a user I can get an idea of what a planet or moon looks like by seeing the image associated with it.
+
+Assert that the each space body has the correct image associated with it.
+7.
+The user should be able to go back to the main screen after looking at the description of each item.
+
+As a user I can go back to the main screen after looking at the description of each item.
+
+Assert that pressing the back button on the detail screen will go back to the main screen.
+
+8.
+There should be animation of the objects in the screen moving when the search terms are changed.
+
+As a user I can see animation of the boxes containing the planet or moon info when I change the search terms.
+
+Assert that when changing the search query, the items in the list will animate displaying its removal or addition.
