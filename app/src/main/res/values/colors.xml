@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#090f36</color>
+    <color name="colorPrimaryDark">#1d2035</color>
+    <color name="colorTextViewBorder">#37ea31</color>
+    <color name="colorBlueBorder">#178ded</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#c8e8ff</color>
+    <color name="titleTextColor">#37ea31</color>
+    <color name="tab_active">#fae20c</color>
+    <color name="tab_inactive">#ffffff</color>
+
+</resources>
