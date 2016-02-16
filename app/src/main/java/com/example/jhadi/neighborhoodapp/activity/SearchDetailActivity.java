@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.jhadi.neighborhoodapp.database.Comment;
 import com.example.jhadi.neighborhoodapp.database.Moon;
@@ -51,6 +52,10 @@ public class SearchDetailActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_detail);
+
+        //Fix for other phones
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
 
         //Add back function to action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
