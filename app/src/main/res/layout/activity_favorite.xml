@@ -14,7 +14,8 @@
         android:paddingTop="8dp"
         android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:contentDescription="List of your favorite planets and moons."/>
 
 
 

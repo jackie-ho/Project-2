@@ -13,7 +13,8 @@
         android:id="@+id/list_image"
         android:layout_width="90dp"
         android:layout_height="80dp"
-
+        android:contentDescription="Image of the planet or moon"
+        android:nextFocusDown="@+id/body_name"
         android:layout_gravity="center"
         />
 
@@ -23,21 +24,23 @@
             android:layout_height="wrap_content"
             android:text="Name"
             android:textSize="27sp"
+            android:contentDescription="Name of planet or moon"
             />
 
         <TextView
             android:id="@+id/detail_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Click for details"
-            android:textStyle="italic"
+            android:text="Radius"
+            android:contentDescription="Radius of space body"
             android:textSize="15sp"/>
     <TextView
         android:id="@+id/distance_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="distance from"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:contentDescription="Distance from sun or orbiting planet"/>
 
 
     </LinearLayout>

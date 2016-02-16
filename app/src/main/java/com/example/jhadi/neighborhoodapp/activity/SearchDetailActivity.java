@@ -48,8 +48,6 @@ public class SearchDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.DetailStyle);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_detail);
 
