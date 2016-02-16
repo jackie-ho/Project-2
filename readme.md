@@ -9,6 +9,10 @@ Going into the screens for each space object, you can add it to favorites for vi
 can also leave comments on each planet or moon which would be saved in a database and can be viewed
 later on.
 
+Screenshot of the home page is found below:
+http://imgur.com/zapClJQ
+
+
 ## Bugs
 When favoriting a planet on the planet fragment, it does not immediately update the favorite list in the
 favorite tab unless you scroll back to the first tab.

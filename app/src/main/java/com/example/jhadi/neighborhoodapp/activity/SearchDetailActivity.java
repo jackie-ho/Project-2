@@ -75,7 +75,7 @@ public class SearchDetailActivity extends AppCompatActivity {
         mBodyName = getIntent().getStringExtra("BODYNAME");
         mPlanetOrMoon = getIntent().getBooleanExtra("PLANETBOOLEAN", false);
 
-        setTitle("Detail on "+mBodyName);
+        setTitle("Details on "+mBodyName);
 
 
         //Declare moon, planet objects

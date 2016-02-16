@@ -47,80 +47,14 @@ public class PlanetSQLiteHelper extends SQLiteAssetHelper {
 
     private PlanetSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        setForcedUpgrade();
-
+        setForcedUpgrade(); //Forced upgrade of database
     }
-
     public static PlanetSQLiteHelper getInstance(Context context) {
         if (instance == null) {
             instance = new PlanetSQLiteHelper(context);
         }
         return instance;
     }
-
-//    @Override
-//    public void onCreate(SQLiteDatabase db) {
-//        db.execSQL("CREATE TABLE " + PLANET_TABLE_NAME + " (" +
-//                PLANET_ID + " INTEGER PRIMARY KEY, " +
-//                PLANET_NAME + " TEXT, " +
-//                PLANET_DESC + " TEXT, " +
-//                PLANET_APHELION + " NUMERIC, " +
-//                PLANET_PERIHELION + " NUMERIC, " +
-//                PLANET_ORBIT + " INTEGER, " +
-//                PLANET_RADIUS + " NUMERIC, " +
-//                PLANET_GRAVITY + " NUMERIC, " +
-//                PLANET_FAVORITE + " INTEGER)");
-//        db.execSQL("CREATE TABLE " + MOON_TABLE_NAME + " (" +
-//                MOON_ID + " INTEGER PRIMARY KEY, " +
-//                MOON_NAME + " TEXT, " +
-//                MOON_DESC + " TEXT, " +
-//                MOON_APOGEE + " INTEGER, " +
-//                MOON_PERIGEE + " INTEGER, " +
-//                MOON_SATELLITE_OF + " TEXT, " +
-//                MOON_RADIUS + " TEXT, " +
-//                MOON_GRAVITY + " NUMERIC, " +
-//                MOON_FAVORITE + " INTEGER, " +
-//                  )");
-//
-//    }
-//
-//    public List<SpaceObject> searchSpaceObjects(String query){
-//        List<SpaceObject> spaceObjects = new ArrayList<SpaceObject>();
-//        //Search if it is text only
-//        if (query != null && !query.trim().isEmpty() && !query.matches(".*\\d+.*")) {
-//            SQLiteDatabase db = getReadableDatabase();
-//            String selection = MOON_NAME + " LIKE ? OR " + MOON_DESC + "LIKE ?";
-//            String[] selectionArgs = new String[]{"%" + query + "%", "%" + query + "%"};
-//
-//            Cursor moonCursor = db.query(MOON_TABLE_NAME, new String[]{MOON_NAME, MOON_DESC, MOON_IMAGEURL}, selection, selectionArgs, null, null, null);
-//            moonCursor.moveToFirst();
-//
-//
-//            while (!moonCursor.isAfterLast()) {
-//                String moonName = moonCursor.getString(moonCursor.getColumnIndex(MOON_NAME));
-//                String moonImage = moonCursor.getString(moonCursor.getColumnIndex(MOON_IMAGEURL));
-//                String moonDesc = moonCursor.getString(moonCursor.getColumnIndex(MOON_DESC));
-//                spaceObjects.add(new SpaceObject(moonName, moonImage, moonDesc));
-//                moonCursor.moveToNext();
-//            }
-//        }
-//            return spaceObjects;
-//
-//    }
-
-
-//    @Override
-//         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        db.execSQL("DROP TABLE IF EXIST" + PLANET_TABLE_NAME);
-//        db.execSQL("DROP TABLE IF EXIST" + MOON_TABLE_NAME);
-//        onCreate(db);
-//
-//    }
-//    public Cursor getAllMoons(){
-//        SQLiteDatabase db = getReadableDatabase();
-//        Cursor cursor = db.query(MOON_TABLE_NAME, MOON_COLUMNS, null, null, null, null, null);
-//        return cursor;
-//    }
 
 
 }
