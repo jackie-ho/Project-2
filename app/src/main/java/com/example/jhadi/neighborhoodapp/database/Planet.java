@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.widget.Toast;
 
 /**
@@ -27,45 +28,27 @@ public class Planet {
 
     PlanetSQLiteHelper mHelper;
     SQLiteDatabase mDatabase;
+    SQLiteDatabase db;
     private Context context;
 
 
     public Planet(Context context) {
         mHelper = PlanetSQLiteHelper.getInstance(context);
-        mDatabase = mHelper.getWritableDatabase();
+        //mDatabase = mHelper.getWritableDatabase();
         this.context = context;
-    }
 
-    //Not used
-    public void deletePlanet (String planet){
-
-        mDatabase.delete("PLANETS", "NAME LIKE ?", new String[]{planet});
-    }
-
-    //Not used
-    public void createPlanet (String name, String desc, double aphelion, double perihelion, int orbit, double radius, double gravity){
-        ContentValues values = new ContentValues();
-        values.put("NAME", name);
-        values.put("DESCRIPTION", desc);
-        values.put("APHELION", aphelion);
-        values.put("PERIHELION", perihelion);
-        values.put("ORBIT",orbit);
-        values.put("RADIUS",radius);
-        values.put("GRAVITY",gravity);
-        values.put("FAVORITE",0);
-        mDatabase.insert("PLANETS", null, values);
     }
 
     //Database with the name and url
     public Cursor getAllPlanetsByNameAndImage(){
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(PLANET_TABLE_NAME, new String[]{PLANET_NAME, PLANET_DESC, PLANET_IMAGE},null,null,null,null,null);
         return cursor;
     }
 
     //Detect whether space body is a planet or moon
     public boolean searchPlanetByName(String str){
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(PLANET_TABLE_NAME, new String[]{PLANET_NAME}, PLANET_NAME + " LIKE ?", new String[]{str},null,null,null);
         cursor.moveToFirst();
         if (cursor != null && cursor.getCount() > 0) {
@@ -80,7 +63,7 @@ public class Planet {
 
     //Get all the planets in database
     public Cursor getPlanets(){
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(PLANET_TABLE_NAME, PLANET_COLUMNS, null, null, null, null, null);
         cursor.moveToFirst();
         return cursor;
@@ -88,7 +71,7 @@ public class Planet {
 
     //Method for displaying favorited Planets
     public  Cursor getFavoritePlanets(){
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(PLANET_TABLE_NAME, PLANET_COLUMNS, PLANET_FAVORITE+" = ? ",new String[]{"1"},null,null,null);
         cursor.moveToFirst();
         return cursor;
@@ -96,7 +79,7 @@ public class Planet {
 
     //Make a planet a favorite
     public void addFavoritePlanet(String planet){
-        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db = mHelper.getWritableDatabase();
         Cursor cursor = db.query(PLANET_TABLE_NAME, new String[]{PLANET_FAVORITE}, PLANET_NAME+ " = ?", new String[]{planet},null,null,null);
         cursor.moveToFirst();
         //Check if location has been already added to favorites
@@ -110,5 +93,6 @@ public class Planet {
         }
         cursor.close();
     }
+
 
 }

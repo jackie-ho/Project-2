@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 
 /**
  * Created by JHADI on 2/11/16.
@@ -19,17 +20,17 @@ public class Comment {
     private PlanetSQLiteHelper mHelper;
     private SQLiteDatabase mDatabase;
     private Context context;
+    SQLiteDatabase db;
 
     public Comment(Context context) {
         mHelper = PlanetSQLiteHelper.getInstance(context);
-
         this.context = context;
     }
     //get comments from database
 
     public Cursor getComments(String bodyName) {
         bodyName = bodyName.toUpperCase();
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(COMMENT_TABLE, COMMENT_COLUMNS,
                 COMMENT_NAME + " = ? ",
                 new String[]{bodyName},
@@ -40,6 +41,7 @@ public class Comment {
     //Insert comment to database
     public void addComment(String bodyName, String name, String comment) {
         mDatabase = mHelper.getWritableDatabase();
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(COMMENT_NAME, bodyName.toUpperCase());
         contentValues.put(COMMENT_AUTHOR, name);
@@ -47,4 +49,8 @@ public class Comment {
         mDatabase.insert(COMMENT_TABLE, null, contentValues);
     }
 
+
+
+
 }
+

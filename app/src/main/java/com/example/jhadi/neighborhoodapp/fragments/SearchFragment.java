@@ -1,6 +1,7 @@
 package com.example.jhadi.neighborhoodapp.fragments;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -44,7 +45,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
     private List<SpaceObject> mSpaceObjectList;
     private int mQueryFlag;
     SearchView searchView;
-
+    FilterAsyncTask filterAsyncTask;
 
     public static SearchFragment newInstance() {
         return new SearchFragment();
@@ -95,11 +96,12 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
     @Override
     public boolean onQueryTextChange(String query) {
         if (query != null && !query.isEmpty() || mQueryFlag > 0) {
-            List<SpaceObject> filteredSpaceObjectList = filter(mSpaceObjectList, query);
-                 mAdapter.animateTo(filteredSpaceObjectList);
-                 mRecyclerView.scrollToPosition(0);
-                 mQueryFlag += 1; // Prevent method from activating when user first selects searchview.
-
+//            List<SpaceObject> filteredSpaceObjectList = filter(mSpaceObjectList, query);
+//                 mAdapter.animateTo(filteredSpaceObjectList);
+//                 mRecyclerView.scrollToPosition(0);
+//                 mQueryFlag += 1; // Prevent method from activating when user first selects searchview.
+            filterAsyncTask = new FilterAsyncTask();
+            filterAsyncTask.execute(query);
         }
         return true;
     }
@@ -197,6 +199,33 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         super.onActivityCreated(savedInstanceState);
         RelativeLayout relativeLayout = (RelativeLayout)getActivity().findViewById(R.id.container);
         relativeLayout.setBackgroundResource(R.drawable.galaxy);
+    }
+
+    private class FilterAsyncTask extends AsyncTask<String,Void,Void>{
+
+        List<SpaceObject> filteredSpaceObjectList;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mRecyclerView.scrollToPosition(0);
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            String query = params[0];
+            filteredSpaceObjectList = filter(mSpaceObjectList, query);
+
+            mQueryFlag += 1; // Prevent method from activating when user first selects searchview.
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            mAdapter.animateTo(filteredSpaceObjectList);
+
+        }
     }
 }
 
